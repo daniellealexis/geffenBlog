@@ -1,0 +1,67 @@
+/*
+Theme Name: Geffen Careers Blog
+Description: Child theme from Evolve theme
+Author: Danielle Lewandowski
+Template: evolve
+*/
+
+
+.header {
+padding-top: 3rem;
+padding-bottom: 3rem;
+}
+
+#logo-image {
+max-width: 200px;
+}
+
+body #header.sticky-header img#logo-image {
+max-width: 100px;
+}
+
+img.content-box-image {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 3rem;
+}
+
+.content-box-1 h2 {
+display: none;
+}
+
+#servicesList > li {
+    display: inline-block;
+    width: 32%;
+    float: left;
+    border: 2px solid;
+    padding: 2rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-right: 1.5%;
+}
+
+#servicesList {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+#servicesList ul {
+    text-align: left;
+    margin-top: 1rem;
+    text-transform: none;
+    margin-left: 0;
+}
+
+#servicesList ul li {
+    list-style-image: none;
+}
+
+#servicesList > li:last-child {
+    margin-right: 0%;
+}
