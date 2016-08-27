@@ -4,64 +4,93 @@ Description: Child theme from Evolve theme
 Author: Danielle Lewandowski
 Template: evolve
 */
-
-
+#fiveStepList {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+}
+#fiveStepList li {
+  display: inline-block;
+  width: 20%;
+  font-size: 0.9rem;
+  list-style-image: none;
+}
+#fiveStepList li strong {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+h6.sub-line {
+  margin-bottom: -3.25rem;
+  font-style: italic !important;
+}
+.content-box.content-box-1 .content-box-image {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 3rem;
+}
+.content-box.content-box-1 h2 {
+  display: none;
+}
+.content-box.content-box-1 > p {
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+}
 .header {
-padding-top: 3rem;
-padding-bottom: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
-
+.menu-container .menu-header {
+  background: #273039 !important;
+}
 #logo-image {
-max-width: 200px;
+  max-width: 200px;
 }
-
-body #header.sticky-header img#logo-image {
-max-width: 100px;
+body #header.sticky-header #logo-image {
+  max-width: 100px;
 }
-
-img.content-box-image {
-    max-width: 220px;
-    width: 100%;
-    height: auto;
-    margin-bottom: 3rem;
+.entry-content.article {
+  margin-top: 0;
 }
-
-.content-box-1 h2 {
-display: none;
+.entry-content.article h1 {
+  margin: 3rem 0 2rem;
+  color: #51545c !important;
+  font-size: 28px !important;
+  line-height: 1;
 }
-
-#servicesList > li {
-    display: inline-block;
-    width: 32%;
-    float: left;
-    border: 2px solid;
-    padding: 2rem 1rem;
-    text-align: center;
-    text-transform: uppercase;
-    margin-right: 1.5%;
-}
-
 #servicesList {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
 }
-
-#servicesList ul {
-    text-align: left;
-    margin-top: 1rem;
-    text-transform: none;
-    margin-left: 0;
+#servicesList > li {
+  display: inline-block;
+  width: 32%;
+  float: left;
+  border: 2px solid;
+  padding: 2rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-right: 1.5%;
 }
-
-#servicesList ul li {
-    list-style-image: none;
-}
-
 #servicesList > li:last-child {
-    margin-right: 0%;
+  margin-right: 0;
+}
+#servicesList ul {
+  text-align: left;
+  margin-top: 1rem;
+  text-transform: none;
+  margin-left: 0;
+}
+#servicesList ul li {
+  list-style-image: none;
 }
