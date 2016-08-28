@@ -1,2 +1,5 @@
 # Mac
 .DS_Store
+
+# Unremoved compiled substyle css files
+wp-content/themes/evolve-child/sub-styles/*.css

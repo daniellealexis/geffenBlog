@@ -45,14 +45,42 @@ h6.sub-line {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+@media screen and (max-width: 768px) {
+  .header {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+.header .title-container {
+  display: none;
+}
 .menu-container .menu-header {
   background: #273039 !important;
 }
 #logo-image {
   max-width: 200px;
 }
+#menu-main-nav.nav-menu li.nav-hover ul {
+  background: #273039;
+}
 body #header.sticky-header #logo-image {
   max-width: 100px;
+}
+#wrapper .dd-container label {
+  color: #c1c1c1 !important;
+}
+#wrapper .dd-container label.dd-selected-text {
+  box-shadow: none;
+}
+#wrapper .dd-options {
+  border-color: #1b2228 !important;
+}
+#wrapper .dd-options li {
+  border-color: #1b2228 !important;
+}
+#wrapper .dd-options li a:hover {
+  background-color: #1b2228 !important;
+  color: #fff !important;
 }
 .entry-content.article {
   margin-top: 0;

@@ -4,23 +4,52 @@
 
 .header
 	padding-top 3rem
-	padding-bottom 3rem
+	padding-bottom @padding-top
+
+	@media screen and (max-width: $menuBreakpoint)
+		padding-top 1.5rem
+		padding-bottom @padding-top
+
+	.title-container
+		display none
 
 .menu-container
 	.menu-header
-		background $navDarkBlue !important
+		background $navBlue !important
 
 #logo-image
 	max-width 200px
 
- #header
-	ul.nav-menu
-		li.nav-hover
-			ul
-				background $navDarkBlue
+#menu-main-nav.nav-menu
+	li.nav-hover
+		ul
+			background $navBlue
+
 
 // Sticky Header
 body #header.sticky-header
 
 	#logo-image
 		max-width 100px
+
+
+// Mobile Styling
+#wrapper
+
+	.dd-container
+
+		label
+			color $lightGrey !important
+
+			&.dd-selected-text
+				box-shadow none
+
+	.dd-options
+		border-color $navDarkBlue !important
+
+		li
+			border-color $navDarkBlue !important
+
+			a:hover
+				background-color $navDarkBlue !important
+				color #FFFFFF !important
