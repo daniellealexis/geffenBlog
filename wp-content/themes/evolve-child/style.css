@@ -66,6 +66,9 @@ h6.sub-line {
 body #header.sticky-header #logo-image {
   max-width: 100px;
 }
+body #header.sticky-header li.nav-hover ul {
+  background: #273039;
+}
 #wrapper .dd-container label {
   color: #c1c1c1 !important;
 }
