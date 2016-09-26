@@ -1,0 +1,58 @@
+/*
+	Base Styles
+*/
+
+a // Links
+.markup-format a
+	color $primary
+
+	&:hover
+		color darken($primary, 20%)
+
+/*
+	Header
+*/
+
+.top-header
+	.custom-logo
+		max-width 250px
+		height auto
+
+#header
+	.bottom-header
+		span.span-dot
+			color $secondary
+
+/*
+	Header Menu
+*/
+
+#header
+	.top-header
+		.header-navigation
+			ul li
+				a:hover
+					color $primary
+
+				&.menu-item-has-children
+					.sub-menu
+						li a:hover
+							color $secondary
+
+/*
+	Footer
+*/
+
+#footer
+	.copyright
+		display none
+
+	.widget ul
+		li
+			&::before
+				color $secondary
+
+			a:hover
+				color $secondary
+
+
