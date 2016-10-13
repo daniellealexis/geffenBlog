@@ -48,7 +48,8 @@ $wp_customize->add_control(
         'type'      => 'checkbox',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_testimonials_general',
-        'priority'  => 1
+        'priority'  => 1,
+        'active_callback'   => 'illdy_is_active_jetpack_testimonials'
     )
 );
 

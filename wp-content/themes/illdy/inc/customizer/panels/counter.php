@@ -8,24 +8,24 @@ $prefix = 'illdy';
 /***********************************************/
 /******************* COUNTER  ******************/
 /***********************************************/
-$wp_customize->add_panel( $panel_id,
-    array(
-        'priority'          => 107,
-        'capability'        => 'edit_theme_options',
-        'theme_supports'    => '',
-        'title'             => __( 'Counter Section', 'illdy' ),
-        'description'       => __( 'Control various options for counter section from front page.', 'illdy' ),
-    )
-);
+// $wp_customize->add_panel( $panel_id,
+//     array(
+//         'priority'          => 107,
+//         'capability'        => 'edit_theme_options',
+//         'theme_supports'    => '',
+//         'title'             => __( 'Counter Section', 'illdy' ),
+//         'description'       => __( 'Control various options for counter section from front page.', 'illdy' ),
+//     )
+// );
 
 /***********************************************/
 /******************* General *******************/
 /***********************************************/
 $wp_customize->add_section( $prefix . '_counter_general' ,
     array(
-        'title'     => __( 'General', 'illdy' ),
-        'panel'     => $panel_id,
-        'priority'  => 1
+        'priority'      => 107,
+        'title'         => __( 'Counter Section', 'illdy' ),
+        'description'   => __( '*In order to get this section to show up on the front-page, make sure you have: 1) enabled static front-page & 2) have a widget placed in this sidebar. More specifically go to Widgets -> Front page - counter sidebar & place the [Illdy] - Counter widget in here.', 'illdy' ),
     )
 );
 
@@ -47,16 +47,6 @@ $wp_customize->add_control(
     )
 );
 
-/***********************************************/
-/**************** Background *******************/
-/***********************************************/
-$wp_customize->add_section( $prefix . '_counter_background' ,
-    array(
-        'title'     => __( 'Background', 'illdy' ),
-        'panel'     => $panel_id,
-        'priority'  => 2
-    )
-);
 
 // Type of Background
 $wp_customize->add_setting( $prefix . '_counter_background_type', array(
@@ -66,7 +56,7 @@ $wp_customize->add_setting( $prefix . '_counter_background_type', array(
 ) );
 $wp_customize->add_control( $prefix . '_counter_background_type', array(
     'label'     => __( 'Type of Background', 'illdy' ),
-    'section'   => $prefix .'_counter_background',
+    'section'   => $prefix .'_counter_general',
     'settings'  => $prefix . '_counter_background_type',
     'type'      => 'radio',
     'choices'   => array(
@@ -90,7 +80,7 @@ $wp_customize->add_control(
         $wp_customize, $prefix . '_counter_background_image',
         array(
             'label'     => __( 'Image', 'illdy' ),
-            'section'   => $prefix .'_counter_background',
+            'section'   => $prefix .'_counter_general',
             'settings'  => $prefix . '_counter_background_image',
             'priority'  => 2
         )
@@ -112,7 +102,7 @@ $wp_customize->add_control(
     $prefix . '_counter_background_color',
     array(
         'label'     => __( 'Color', 'illdy' ),
-        'section'   => $prefix .'_counter_background',
+        'section'   => $prefix .'_counter_general',
         'settings'  => $prefix . '_counter_background_color',
         'priority'  => 3
     ) ) 

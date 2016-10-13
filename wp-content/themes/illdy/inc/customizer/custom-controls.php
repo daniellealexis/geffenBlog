@@ -74,3 +74,4 @@ if( !class_exists( 'Illdy_Text_Custom_Control' ) ) {
         }
     }
 }
+

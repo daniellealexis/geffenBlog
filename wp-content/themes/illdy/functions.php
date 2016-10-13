@@ -9,6 +9,7 @@
 if ( ! function_exists( 'illdy_setup' ) ) {
 	add_action( 'after_setup_theme', 'illdy_setup' );
 	function illdy_setup() {
+
 		// Extras
 		require_once trailingslashit( get_template_directory() ) . 'inc/extras.php';
 
@@ -52,7 +53,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		) );
 
 		// Add Image Size
-		add_image_size( 'illdy-blog-list', 653, 435, true );
+		add_image_size( 'illdy-blog-list', 750, 500, true );
 		add_image_size( 'illdy-widget-recent-posts', 70, 70, true );
 		add_image_size( 'illdy-blog-post-related-articles', 240, 206, true );
 		add_image_size( 'illdy-front-page-latest-news', 360, 213, true );
@@ -113,6 +114,14 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 					"description" => esc_html__( 'Import our demo content from Demo Content tab', 'illdy' ),
 					"check"       => illdy_is_not_imported(),
 				),
+				array(
+					"id"          => 'illdy-req-insert-content',
+					"title"       => esc_html__( 'My content is missing', 'illdy' ),
+					"description" => esc_html__( 'If you\'re viewing your website while being logged-out and you notice some of your settings / texts might be missing, that\'s happening because WordPress.org does not allow us to use demo content. 
+					The best we could do is make it available for admins so that they at least know how the site might look with demo content. 
+					This can be easily fixed in two ways: import our demo content, by going to the Import Demo Content tab, or by going through each setting in the customizer, editing it (adding a space and deleting it will do it) and clicking on save. We are sorry for the inconvenience.', 'illdy' ),
+					"check"       => illdy_is_not_imported(),
+				),
 			);
 
 			require get_template_directory() . '/inc/admin/welcome-screen/welcome-screen.php';
@@ -133,15 +142,15 @@ if ( ! function_exists( 'illdy_is_not_latest_posts' ) ) {
 
 if ( ! function_exists( 'illdy_is_not_imported' ) ) {
 	function illdy_is_not_imported() {
-		
+
 		if ( defined( "ILLDY_COMPANION" ) ) {
-			$illdy_show_required_actions = get_option('illdy_show_required_actions');
-			if ( isset($illdy_show_required_actions['illdy-req-import-content']) ) {
+			$illdy_show_required_actions = get_option( 'illdy_show_required_actions' );
+			if ( isset( $illdy_show_required_actions['illdy-req-import-content'] ) ) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
-		}else{
+		} else {
 			return true;
 		}
 
@@ -234,6 +243,17 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'name'          => __( 'Blog Sidebar', 'illdy' ),
 			'id'            => 'blog-sidebar',
 			'description'   => __( 'The widgets added in this sidebar will appear in blog page.', 'illdy' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title"><h3>',
+			'after_title'   => '</h3></div>',
+		) );
+
+		// Page Sidebar
+		register_sidebar( array(
+			'name'          => __( 'Page Sidebar', 'illdy' ),
+			'id'            => 'page-sidebar',
+			'description'   => __( 'The widgets added in this sidebar will appear on single pages.', 'illdy' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<div class="widget-title"><h3>',
@@ -365,4 +385,16 @@ function illdy_pagination() {
 		'next_text'          => '<i class="fa fa-angle-right"></i>',
 		'screen_reader_text' => '',
 	) );
+}
+
+
+if ( !function_exists( 'illdy_get_tgmpa_url' ) ) {
+	function illdy_get_tgmpa_url() {
+		return add_query_arg(
+			array(
+				'page' => urlencode( 'tgmpa-install-plugins' ),
+			),
+			self_admin_url( 'themes.php' )
+		);
+	}
 }
