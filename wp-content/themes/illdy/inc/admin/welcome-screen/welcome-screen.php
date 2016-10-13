@@ -99,7 +99,7 @@ class illdy_Welcome {
 				'nr_actions_required' => $nr_actions_required,
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'template_directory' => get_template_directory_uri(),
-				'no_required_actions_text' => __( 'Hooray! There are no required actions for you right now.','illdy' )
+				'no_required_actions_text' => __( 'Hooray! There are no recomended actions for you right now.','illdy' )
 			) );
 		}
 	}
@@ -202,7 +202,7 @@ class illdy_Welcome {
 
 		<ul class="illdy-nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a href="#getting_started" aria-controls="getting_started" role="tab" data-toggle="tab"><?php esc_html_e( 'Getting started','illdy'); ?></a></li>
-			<li role="presentation" class="illdy-w-red-tab"><a href="#actions_required" aria-controls="actions_required" role="tab" data-toggle="tab"><?php esc_html_e( 'Actions required','illdy'); ?></a></li>
+			<li role="presentation" class="illdy-w-red-tab"><a href="#actions_required" aria-controls="actions_required" role="tab" data-toggle="tab"><?php esc_html_e( 'Actions recomended','illdy'); ?></a></li>
 			<?php if ( defined("ILLDY_COMPANION") ) { ?>
 				<li role="presentation"><a href="#demo_content" aria-controls="demo_content" role="tab" data-toggle="tab"><?php esc_html_e( 'Demo Content','illdy'); ?></a></li>
 			<?php } ?>

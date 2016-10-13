@@ -1,6 +1,6 @@
 <?php
 // Set Panel ID
-$panel_id = 'illdy_panel_latest_news';
+$panel_id = 'illdy_latest_news_general';
 
 // Set prefix
 $prefix = 'illdy';
@@ -88,6 +88,29 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
             'type'          => 'textarea'
         )
     );
+}elseif ( !defined( "ILLDY_COMPANION" ) ) {
+    
+    $wp_customize->add_setting(
+        $prefix . '_latest_news_general_text',
+        array(
+            'sanitize_callback' => 'esc_html',
+            'default'           => '',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new Illdy_Text_Custom_Control(
+            $wp_customize, $prefix . '_latest_news_general_text',
+            array(
+                'label'             => __( 'Install Illdy Companion', 'illdy' ),
+                'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_tgmpa_url()),
+                'section'           => $panel_id,
+                'settings'          => $prefix . '_latest_news_general_text',
+                'priority'          => 3,
+            )
+        )
+    );
+    
 }
 
 

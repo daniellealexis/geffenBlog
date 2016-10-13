@@ -1,3 +1,38 @@
+### V1.0.35
+	- Resolved #57 - Removed link attribution. (https://github.com/MachoThemes/illdy/issues/57)
+
+### V1.0.34
+	- Resolved #56 - Services and Testimonials Sections are missing the Title field. (https://github.com/MachoThemes/illdy/issues/56)
+
+### V1.0.33
+	- Resolved #51 - Uncheck dedicated page header picture by default.( https://github.com/MachoThemes/illdy/issues/51 )
+	- Resolved #52 - Change Parallax header background position from cover to contain.( https://github.com/MachoThemes/illdy/issues/52 )
+	- Resolved #53 - Style contact form 7 outside of homepage.( https://github.com/MachoThemes/illdy/issues/53 )
+	- Resolved #54 - Random number in sections.( https://github.com/MachoThemes/illdy/issues/54 )
+	- Resolved #55 - Projects cannot be created.( https://github.com/MachoThemes/illdy/issues/55 )
+	
+### V1.0.32
+    - we had two panels for the counter section and we made them into a single one.
+    - added a new CSS stylesheet to beautify section descriptions (make them more visible). /inc/customizer/assets/css/illdy-customizer.css
+
+### V1.0.31
+    - w.org requirements: Please change the text in the theme about page "Actions required" there should be no required actions. (fixed)
+    - w.org requirements: The front page sections do not have any options to define where the data is coming from (fixed, if the companion plugin is not installed a notice will be shown that takes you to the TGMPA plugin install page).
+
+### V1.0.30
+    - #26 ( Mobile burger position is off )
+    - #34 ( Position for the (jumbotron) header picture to be center )
+    - #37 ( Blog listing as homepage (your latest posts) always displays Archive as header title )
+    - #38 ( Contact map entry title field is missing from Customizer )
+    - #39 ( Add 5 more social services for contact section )
+    - #40 ( Provide option to make blog and posts full width. Currently all have sidebar )
+    - #41 ( Strange site title and jumbotron behaviour )
+    - #43 ( Add "Demo Content will not display on live website" Message )
+    - #45 ( Fix display for more than 3-4 elements in services, team, news etc )
+    - #46 ( Copyright options not working )
+    - #49 ( Jumbotron parallax effect )
+    - #50 ( Add page sidebar )
+
 ### V1.0.29
     - #35 ( Notice: Undefined index: Illdy_Widget_Recent_Posts  )
     - #36 ( Missing escape function in header.php )

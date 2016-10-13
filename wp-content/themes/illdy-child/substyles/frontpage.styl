@@ -1,0 +1,96 @@
+/*
+	Header
+*/
+
+#header
+	.bottom-header
+		padding-top 125px
+		padding-bottom 150px
+
+		p
+			font-size 18px
+			max-width 500px
+			margin-right auto
+			margin-left auto
+
+		.header-button-one
+			display none
+
+		.header-button-two
+			background $secondary
+
+			&:hover
+				background darken($secondary, 20%)
+
+/*
+	General/Shared
+*/
+
+.front-page-section
+	.section-header
+		p
+			font-size 1.15rem
+
+/*
+	About
+*/
+
+#about
+	.section-header
+		margin-bottom 2rem
+
+	.widget_illdy_person
+		width 100%
+
+		.person-content
+
+			h4 // Name
+				font-size 1.5rem
+
+			h5 // Job Title
+				font-size 1rem
+/*
+	Services
+*/
+
+#services
+	.widget_illdy_service
+		vertical-align top
+
+
+/*
+	Testimonials
+*/
+
+$darkPurple = darken($purple, 30%)
+
+#testimonials
+	background: $purple;
+	background: -moz-linear-gradient(top, $purple 0%, $darkPurple 100%);
+	background: -webkit-linear-gradient(top, $purple 0%, $darkPurple 100%);
+	background: linear-gradient(to bottom, $purple 0%, $darkPurple 100%);
+	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$purple, endColorstr=$darkPurple, GradientType=0 );
+
+	.section-content .testimonials-carousel .carousel-testimonial
+		.testimonial-content
+			background-color $darkPurple
+
+			&::after
+				border-color $darkPurple transparent transparent transparent
+
+
+/*
+	Latest News
+*/
+
+#latest-news
+	.section-content
+		.post
+			.post-button
+				color $primary
+
+			.post-title:hover
+				color $primary
+
+	.latest-news-button
+		background $secondary

@@ -1,0 +1,153 @@
+/*
+ Theme Name:   Illdy Child Theme
+ Theme URI:    http://example.com/twenty-fifteen-child/
+ Description:  Illdy Child Theme
+ Author:       Danielle Lewandowski
+ Author URI:   http://webdevdani.com/
+ Template:     illdy
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+#header .bottom-header {
+  padding-top: 125px;
+  padding-bottom: 150px;
+}
+#header .bottom-header p {
+  font-size: 18px;
+  max-width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#header .bottom-header .header-button-one {
+  display: none;
+}
+#header .bottom-header .header-button-two {
+  background: #e94c38;
+}
+#header .bottom-header .header-button-two:hover {
+  background: #d02c17;
+}
+.front-page-section .section-header p {
+  font-size: 1.15rem;
+}
+#about .section-header {
+  margin-bottom: 2rem;
+}
+#about .widget_illdy_person {
+  width: 100%;
+}
+#about .widget_illdy_person .person-content h4 {
+  font-size: 1.5rem;
+}
+#about .widget_illdy_person .person-content h5 {
+  font-size: 1rem;
+}
+#services .widget_illdy_service {
+  vertical-align: top;
+}
+#testimonials {
+  background: #7961ab;
+  background: -moz-linear-gradient(top, #7961ab 0%, #54417a 100%);
+  background: -webkit-linear-gradient(top, #7961ab 0%, #54417a 100%);
+  background: linear-gradient(to bottom, #7961ab 0%, #54417a 100%);
+}
+#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content {
+  background-color: #54417a;
+}
+#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content::after {
+  border-color: #54417a transparent transparent transparent;
+}
+#latest-news .section-content .post .post-button {
+  color: #20bdbe;
+}
+#latest-news .section-content .post .post-title:hover {
+  color: #20bdbe;
+}
+#latest-news .latest-news-button {
+  background: #e94c38;
+}
+body,
+html {
+  font-size: 16px;
+  color: #5a5a5a;
+}
+a,
+.markup-format a {
+  color: #20bdbe;
+}
+a:hover,
+.markup-format a:hover {
+  color: #1a9798;
+}
+.top-header .custom-logo,
+.top-header img {
+  max-width: 250px;
+  height: auto;
+}
+#header .bottom-header span.span-dot {
+  color: #e94c38;
+}
+#header .top-header .header-navigation ul li a:hover {
+  color: #20bdbe;
+}
+#header .top-header .header-navigation ul li.menu-item-has-children .sub-menu li a:hover {
+  color: #e94c38;
+}
+#footer .footer-logo {
+  text-align: center !important;
+}
+#footer .footer-logo img {
+  max-width: 250px;
+  width: 100%;
+}
+#footer .copyright {
+  display: none;
+}
+#footer .widget ul li::before {
+  color: #e94c38;
+}
+#footer .widget ul li a:hover {
+  color: #e94c38;
+}
+#blog .blog-post .blog-post-title {
+  font-size: 2rem;
+}
+#blog .blog-post .blog-post-title:hover {
+  color: #e94c38;
+}
+#blog .blog-post .blog-post-entry {
+  font-size: 1.15rem;
+  color: #5a5a5a;
+}
+#blog .blog-post .blog-post-entry p {
+  color: #5a5a5a;
+}
+#blog .blog-post .blog-post-button {
+  background-color: #20bdbe;
+}
+.blog-post-meta .post-meta-author {
+  display: none;
+}
+.blog-post-meta .fa {
+  color: #20bdbe !important;
+}
+#comments #comments-list ul.comments .comment .url {
+  color: #e94c38;
+}
+#comments #comments-list ul.comments .comment .comment-reply-link {
+  color: #e94c38;
+}
+#comments #respond .comment-form #input-submit {
+  background-color: #20bdbe;
+  border-color: #20bdbe;
+}
+.widget .widget-title::before {
+  background-color: #20bdbe;
+}
+.widget ul li::before {
+  color: #e94c38;
+}
+.widget ul li a:hover {
+  color: #e94c38;
+}

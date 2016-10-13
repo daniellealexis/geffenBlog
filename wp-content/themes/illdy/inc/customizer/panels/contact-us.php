@@ -69,12 +69,13 @@ $wp_customize->add_control(
     )
 );
 
+
 // Entry
 if ( get_theme_mod( $prefix .'_contact_us_general_entry' ) ) {
     $wp_customize->add_setting( $prefix .'_contact_us_general_entry',
         array(
             'sanitize_callback' => 'illdy_sanitize_html',
-            'default'           => __( 'And we will get in touch as son as possible.', 'illdy' ),
+            'default'           => __( 'And we will get in touch as soon as possible.', 'illdy' ),
             'transport'         => 'postMessage'
         )
     );
@@ -88,6 +89,29 @@ if ( get_theme_mod( $prefix .'_contact_us_general_entry' ) ) {
             'type'          => 'textarea'
         )
     );
+}elseif ( !defined( "ILLDY_COMPANION" ) ) {
+    
+    $wp_customize->add_setting(
+        $prefix . '_contact_us_general_text',
+        array(
+            'sanitize_callback' => 'esc_html',
+            'default'           => '',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new Illdy_Text_Custom_Control(
+            $wp_customize, $prefix . '_contact_us_general_text',
+            array(
+                'label'             => __( 'Install Illdy Companion', 'illdy' ),
+                'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_tgmpa_url()),
+                'section'           => $prefix . '_contact_us_general',
+                'settings'          => $prefix . '_contact_us_general_text',
+                'priority'          => 3,
+            )
+        )
+    );
+    
 }
 
 
@@ -238,6 +262,103 @@ $wp_customize->add_control(
             'priority'       => 10
         )
     );
+
+	/* Google+ URL */
+	$wp_customize->add_setting( $prefix.'_contact_bar_googlep_url',
+		array(
+			'sanitize_callback'  => 'esc_url_raw',
+			'default'            => esc_url_raw('#'),
+			'transport'          => 'postMessage'
+		)
+	);
+
+	$wp_customize->add_control( $prefix.'_contact_bar_googlep_url',
+		array(
+			'label'          => __( 'Google+ URL', 'illdy' ),
+			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
+			'section'        => $prefix.'_general_contact_section',
+			'settings'       => $prefix.'_contact_bar_googlep_url',
+			'priority'       => 10
+		)
+	);
+
+	/* Pinterest URL */
+	$wp_customize->add_setting( $prefix.'_contact_bar_pinterest_url',
+		array(
+			'sanitize_callback'  => 'esc_url_raw',
+			'default'            => esc_url_raw('#'),
+			'transport'          => 'postMessage'
+		)
+	);
+
+	$wp_customize->add_control( $prefix.'_contact_bar_pinterest_url',
+		array(
+			'label'          => __( 'Pinterest URL', 'illdy' ),
+			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
+			'section'        => $prefix.'_general_contact_section',
+			'settings'       => $prefix.'_contact_bar_pinterest_url',
+			'priority'       => 10
+		)
+	);
+
+	/* Instagram URL */
+	$wp_customize->add_setting( $prefix.'_contact_bar_instagram_url',
+		array(
+			'sanitize_callback'  => 'esc_url_raw',
+			'default'            => esc_url_raw('#'),
+			'transport'          => 'postMessage'
+		)
+	);
+
+	$wp_customize->add_control( $prefix.'_contact_bar_instagram_url',
+		array(
+			'label'          => __( 'Instagram URL', 'illdy' ),
+			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
+			'section'        => $prefix.'_general_contact_section',
+			'settings'       => $prefix.'_contact_bar_instagram_url',
+			'priority'       => 10
+		)
+	);
+
+	/* YouTube URL */
+	$wp_customize->add_setting( $prefix.'_contact_bar_youtube_url',
+		array(
+			'sanitize_callback'  => 'esc_url_raw',
+			'default'            => esc_url_raw('#'),
+			'transport'          => 'postMessage'
+		)
+	);
+
+	$wp_customize->add_control( $prefix.'_contact_bar_youtube_url',
+		array(
+			'label'          => __( 'YouTube URL', 'illdy' ),
+			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
+			'section'        => $prefix.'_general_contact_section',
+			'settings'       => $prefix.'_contact_bar_youtube_url',
+			'priority'       => 10
+		)
+	);
+
+	/* Vimeo URL */
+	$wp_customize->add_setting( $prefix.'_contact_bar_vimeo_url',
+		array(
+			'sanitize_callback'  => 'esc_url_raw',
+			'default'            => esc_url_raw('#'),
+			'transport'          => 'postMessage'
+		)
+	);
+
+	$wp_customize->add_control( $prefix.'_contact_bar_vimeo_url',
+		array(
+			'label'          => __( 'Vimeo URL', 'illdy' ),
+			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
+			'section'        => $prefix.'_general_contact_section',
+			'settings'       => $prefix.'_contact_bar_vimeo_url',
+			'priority'       => 10
+		)
+	);
+
+
 
     /* email */
     $wp_customize->add_setting( $prefix.'_email',
