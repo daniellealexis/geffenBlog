@@ -80,6 +80,10 @@ a:hover,
 .markup-format a:hover {
   color: #1a9798;
 }
+textarea,
+input {
+  border-color: #bbb;
+}
 .top-header .custom-logo,
 .top-header img {
   max-width: 250px;
@@ -151,6 +155,12 @@ h6.subtitle {
 }
 h3.has-subtitle {
   margin-top: 0.5rem;
+}
+.contact-submit input[type="submit"] {
+  border-radius: 3px;
+  height: 45px;
+  background-color: #20bdbe;
+  border: none;
 }
 #blog .blog-post .blog-post-title {
   font-size: 2rem;

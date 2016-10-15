@@ -1,0 +1,55 @@
+/*
+	About
+*/
+
+#fiveStepProcessList
+	padding 0
+	overflow hidden
+
+	li
+		list-style-type none
+
+	> li //Step Titles & Blocks
+		display inline-block
+		width 20%
+		float left
+		color $secondary
+		font-weight 600
+		text-transform uppercase
+
+		ul //Step Descriptions
+			padding 0
+			text-transform none
+			font-weight normal
+			color $text-color
+			font-size 0.9rem
+
+	@media screen and (max-width: 525px)
+
+		> li
+			width 100%
+			margin-bottom 1.2rem
+
+			ul
+				font-size 1rem
+
+h6.subtitle
+	margin-bottom 0
+	font-style italic
+	font-size 1rem
+
+h3.has-subtitle
+	margin-top 0.5rem
+
+
+/*
+	Contact
+*/
+
+.contact-submit
+
+	input[type="submit"]
+		border-radius 3px
+		height 45px
+		background-color $primary
+		border none
