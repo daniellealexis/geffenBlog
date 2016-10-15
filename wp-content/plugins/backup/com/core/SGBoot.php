@@ -175,7 +175,7 @@ class SGBoot
             throw new SGExceptionNotFound('cURL extension is not loaded.');
         }
         else if ($requirement=='intSize' && PHP_INT_SIZE < 8){
-            throw new SGExceptionIO("Backup Guard uses 64-bit integers, but it looks like we're running on a version of PHP that doesn't support 64-bit integers (PHP_INT_MAX=" . ((string) PHP_INT_MAX) . ")");
+            throw new SGExceptionIO("BackupGuard uses 64-bit integers, but it looks like we're running on a version of PHP that doesn't support 64-bit integers (PHP_INT_MAX=" . ((string) PHP_INT_MAX) . ")");
         }
     }
 

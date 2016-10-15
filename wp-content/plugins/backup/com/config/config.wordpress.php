@@ -6,6 +6,8 @@ define('SG_ENV_MAGENTO', 'Magento');
 define('SG_ENV_VERSION', $wp_version);
 define('SG_ENV_ADAPTER', SG_ENV_WORDPRESS);
 define('SG_ENV_DB_PREFIX', $wpdb->prefix);
+define('SG_DB_DRIVER_WPDB', "wpdb");
+define('SG_DB_DRIVER_MYSQLI', "mysqli");
 
 require_once(dirname(__FILE__).'/config.php');
 
@@ -24,9 +26,15 @@ define('SG_MAIL_UPLOAD_TEMPLATE', 'mail_upload.php');
 //Backup
 $wpContent = basename(WP_CONTENT_DIR);
 $wpPlugins = basename(WP_PLUGIN_DIR);
+$wpThemes = basename(get_theme_root());
+
 $upload_dir = wp_upload_dir();
 $wpUploads = basename($upload_dir['basedir']);
-$wpThemes = basename(get_theme_root());
+if (!file_exists($wpUploads)) {
+    update_option("upload_path", ""); //To fix invalid path inserted in db
+    $upload_dir = wp_upload_dir();
+	$wpUploads = basename($upload_dir['basedir']);
+}
 
 define('SG_PING_FILE_PATH', $upload_dir['basedir'].'/backup-guard/ping.json');
 

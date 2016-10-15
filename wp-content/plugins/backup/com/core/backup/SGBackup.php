@@ -640,11 +640,11 @@ class SGBackup implements SGIBackupDelegate
 
 	public function restore($backupName)
 	{
-		$this->prepareForRestore($backupName);
-		SGPing::update();
-
 		try
 		{
+			$this->prepareForRestore($backupName);
+			SGPing::update();
+
 			$this->backupFiles->restore($this->filesBackupPath);
 			$this->didFinishFilesRestore();
 		}
@@ -682,6 +682,9 @@ class SGBackup implements SGIBackupDelegate
 		$this->filesBackupPath = $restorePath.'/'.$this->fileName.'.sgbp';
 		$this->databaseBackupPath = $restorePath.'/'.$this->fileName.'.sql';
 
+		//create action inside db
+		$this->actionId = self::createAction($this->fileName, SG_ACTION_TYPE_RESTORE, SG_ACTION_STATUS_IN_PROGRESS_FILES);
+
 		//prepare folder
 		$this->prepareRestoreFolder($restorePath);
 
@@ -692,15 +695,14 @@ class SGBackup implements SGIBackupDelegate
 
 		//save timestamp for future use
 		$this->actionStartTs = time();
-
-		//create action inside db
-		$this->actionId = self::createAction($this->fileName, SG_ACTION_TYPE_RESTORE, SG_ACTION_STATUS_IN_PROGRESS_FILES);
 	}
 
 	private function prepareRestoreFolder($restorePath)
 	{
 		if (!is_writable($restorePath))
 		{
+			SGConfig::set('SG_BACKUP_NOT_WRITABLE_DIR_PATH', $restorePath);
+			SGConfig::set('SG_BACKUP_SHOW_NOT_WRITABLE_ERROR', 1);
 			throw new SGExceptionForbidden('Permission denied. Directory is not writable: '.$restorePath);
 		}
 
@@ -788,7 +790,7 @@ class SGBackup implements SGIBackupDelegate
 		$content .= 'Date: '.@date('Y-m-d H:i').PHP_EOL;
 		$content .= 'Method: '.$confs['method'].PHP_EOL;
 		$content .= 'User Mode: '.$confs['sg_user_mode'].PHP_EOL;
-		$content .= 'SG Backup Guard version: '.$confs['sg_backup_guard_version'].PHP_EOL;
+		$content .= 'BackupGuard version: '.$confs['sg_backup_guard_version'].PHP_EOL;
 		$content .= 'SG archive version: '.$confs['sg_archive_version'].PHP_EOL;
 		$content .= 'OS: '.$confs['os'].PHP_EOL;
 		$content .= 'Server: '.$confs['server'].PHP_EOL;

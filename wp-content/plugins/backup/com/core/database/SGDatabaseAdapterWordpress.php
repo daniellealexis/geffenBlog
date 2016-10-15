@@ -5,6 +5,7 @@ class SGDatabaseAdapterWordpress implements SGIDatabaseAdapter
 {
     private $fetchRowIndex = 0;
     private $lastResult = array();
+    private $connection = null;
 
 	public function query($query, $params=array())
 	{
@@ -36,11 +37,46 @@ class SGDatabaseAdapterWordpress implements SGIDatabaseAdapter
         $this->fetchRowIndex = 0;
         $res = $wpdb->query($query);
 
-        if ($res === false)
-        {
+        if ($res === false) {
             return false;
         }
         return $query;
+    }
+
+    public function execWithAdapter($query, $driver, $params=array())
+    {
+        if($driver == SG_DB_DRIVER_WPDB) {
+            return exec($query, $params);
+        }
+        else {
+
+            if ($this->connection) {
+                return mysqli_query($this->connection, $query);
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    public function connectOverMySqli()
+    {
+        $this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+        return $this->connection;
+    }
+
+    public function closeMySqliConnection()
+    {
+        if ($this->connection) {
+            mysqli_close($this->connection);
+            $this->connection = null;
+        }
+    }
+
+    public function isMySqliAvailable()
+    {
+        return function_exists('mysqli_connect');
     }
 
     public function fetch($st)

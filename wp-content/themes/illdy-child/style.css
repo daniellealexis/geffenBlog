@@ -88,6 +88,9 @@ a:hover,
 #header .bottom-header span.span-dot {
   color: #e94c38;
 }
+.header-navigation li span {
+  text-shadow: 2px 2px 10px #000;
+}
 #header .top-header .header-navigation ul li a:hover {
   color: #20bdbe;
 }
@@ -109,6 +112,45 @@ a:hover,
 }
 #footer .widget ul li a:hover {
   color: #e94c38;
+}
+#fiveStepProcessList {
+  padding: 0;
+  overflow: hidden;
+}
+#fiveStepProcessList li {
+  list-style-type: none;
+}
+#fiveStepProcessList > li {
+  display: inline-block;
+  width: 20%;
+  float: left;
+  color: #e94c38;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#fiveStepProcessList > li ul {
+  padding: 0;
+  text-transform: none;
+  font-weight: normal;
+  color: #5a5a5a;
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 525px) {
+  #fiveStepProcessList > li {
+    width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  #fiveStepProcessList > li ul {
+    font-size: 1rem;
+  }
+}
+h6.subtitle {
+  margin-bottom: 0;
+  font-style: italic;
+  font-size: 1rem;
+}
+h3.has-subtitle {
+  margin-top: 0.5rem;
 }
 #blog .blog-post .blog-post-title {
   font-size: 2rem;

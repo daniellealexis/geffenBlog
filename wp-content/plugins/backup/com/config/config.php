@@ -50,6 +50,7 @@ define('SGBP_EXT', 'sgbp');
 
 define('SG_NOTICE_EXECUTION_TIMEOUT', 'timeoutError');
 define('SG_NOTICE_MIGRATION_ERROR', 'migrationError');
+define('SG_NOTICE_NOT_WRITABLE_ERROR', 'notwritable');
 
 define('SG_WORDPRESS_CORE_TABLE', SG_ENV_DB_PREFIX.'options');
 define('SG_MAGENTO_CORE_TABLE', SG_ENV_DB_PREFIX.'core_config_data');
@@ -108,7 +109,7 @@ define('SG_MAIL_BACKUP_CANCELED_SUBJECT', 'Backup Canceled');
 define('SG_MAIL_RESTORE_SUCCESS_SUBJECT', 'Restore Succeeded');
 define('SG_MAIL_RESTORE_FAIL_SUBJECT', 'Restore Failed');
 
-//Backup
+//BackupGurad
 define('SG_ACTION_STATUS_CREATED', 0);
 define('SG_ACTION_STATUS_IN_PROGRESS_DB', 1);
 define('SG_ACTION_STATUS_IN_PROGRESS_FILES', 2);

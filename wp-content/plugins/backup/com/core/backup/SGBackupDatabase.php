@@ -15,6 +15,7 @@ class SGBackupDatabase implements SGIMysqldumpDelegate
 	private $currentRowCount = 0;
 	private $warningsFound = false;
 	private $queuedStorageUploads = array();
+	private $driver = SG_DB_DRIVER_WPDB;
 
 	private $backupReplacements = array(
 		SG_ENV_DB_PREFIX => SG_DB_PREFIX_REPLACEMENT,
@@ -86,7 +87,23 @@ class SGBackupDatabase implements SGIMysqldumpDelegate
 		SGBackupLog::writeAction('restore database', SG_BACKUP_LOG_POS_START);
 		$this->backupFilePath = $filePath;
 		$this->resetRestoreProgress();
+
+		$this->driver = SG_DB_DRIVER_WPDB;
+		if (SG_DB_ADAPTER == SG_ENV_WORDPRESS && $this->sgdb->isMySqliAvailable()) {
+			$this->driver = SG_DB_DRIVER_MYSQLI;
+
+			$connection = $this->sgdb->connectOverMySqli();
+
+			if (!$connection) {
+				throw new SGExceptionDatabaseError("Could not connect to database over mysqli");
+			}
+		}
+
 		$this->import();
+
+		if (SG_DB_ADAPTER == SG_ENV_WORDPRESS && $this->sgdb->isMySqliAvailable()) {
+			$this->sgdb->closeMySqliConnection();
+		}
 
 		if (SGBoot::isFeatureAvailable('BACKUP_WITH_MIGRATION')) {
 			SGReplacements::migrateSite();
@@ -168,18 +185,27 @@ class SGBackupDatabase implements SGIMysqldumpDelegate
 			if($trimmedRow && substr($trimmedRow, -9) == "/*SGEnd*/")
 			{
 				$importQuery = $this->prepareQueryToExec($importQuery);
-				$res = $this->sgdb->exec($importQuery);
-				if ($res===false)
-				{
-					throw new SGExceptionDatabaseError('Could not execute query: '.$importQuery);
+
+				$res = $this->sgdb->execWithAdapter($importQuery, $this->driver);
+				if ($res===false) {
+					// continue restoring database if any query fails
+					$this->warn('Could not import table: '.@$tableName);
 				}
+
 				$importQuery = '';
 			}
 			$this->currentRowCount++;
 			SGPing::update();
 			$this->updateProgress();
 		}
+
 		@fclose($fileHandle);
+	}
+
+	public function warn($message)
+	{
+		$this->warningsFound = true;
+		SGBackupLog::writeWarning($message);
 	}
 
 	public function didExportRow()

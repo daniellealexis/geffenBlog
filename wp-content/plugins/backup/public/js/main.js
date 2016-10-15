@@ -3,6 +3,7 @@ sgBackup.isModalOpen = false;
 SG_CURRENT_ACTIVE_AJAX = '';
 SG_NOTICE_EXECUTION_TIMEOUT = 'timeoutError'
 SG_NOTICE_MIGRATION_ERROR = 'migrationError'
+SG_NOTICE_NOT_WRITABLE_ERROR = 'notwritable'
 
 jQuery(window).load(function() {
     sgBackup.showReviewModal();
@@ -22,6 +23,9 @@ jQuery(document).ready( function() {
         }
         else if(jQuery(this).parent().attr('which-notice') == SG_NOTICE_MIGRATION_ERROR) {
             notice = SG_NOTICE_MIGRATION_ERROR;
+        }
+        else if(jQuery(this).parent().attr('which-notice') == SG_NOTICE_NOT_WRITABLE_ERROR) {
+            notice = SG_NOTICE_NOT_WRITABLE_ERROR
         }
 
         var sgNoticeClosedHandler = new sgRequestHandler('hideNotice', {notice: notice});

@@ -77,6 +77,7 @@ class SGArchive
 			$range = end($this->ranges); //get last range of file
 
 			$start += $range['start'] + $range['size'];
+			$zlen = $start; // get file compressed size before reload
 		}
 
 		fseek($fp, $offset); // move to point before reload
@@ -111,7 +112,7 @@ class SGArchive
 			));
 			$offset = ftell($fp);
 
-			$start += $zlen;
+			$start += strlen($data);
 
 			SGPing::update();
 
@@ -326,13 +327,13 @@ class SGArchive
 				if( $extra['method'] == SG_BACKUP_METHOD_MIGRATE ) {
 					//If user running Free version
 					if ( !SGBoot::isFeatureAvailable('BACKUP_WITH_MIGRATION') ) {
-						throw new SGExceptionMigrationError("<b>Backup Guard Free</b> doesn't support migration! More detailed information regarding features included in <b>Free</b> and <b>Pro</b> versions you can find here: <a href='".SG_BACKUP_SITE_URL."'>".SG_BACKUP_SITE_URL."</a>");
+						throw new SGExceptionMigrationError("<b>BackupGuard Free</b> doesn't support migration! More detailed information regarding features included in <b>Free</b> and <b>Pro</b> versions you can find here: <a href='".SG_BACKUP_SITE_URL."'>".SG_BACKUP_SITE_URL."</a>");
 					}
 				}
 				else {
 					//If user migrates the archive from one domain to another one
 					if( $extra['siteUrl'] != get_site_url() || $extra['home'] != get_home_url() || $extra['dbPrefix'] != SG_ENV_DB_PREFIX ){
-						throw new SGExceptionMigrationError("You should create a migration, but not standard backup archive if you want to move your website! <b>Backup Guard Free</b> doesn't support migration. More detailed information regarding features included in <b>Free</b> and <b>Pro</b> versions you can find here: <a href='".SG_BACKUP_SITE_URL."'>".SG_BACKUP_SITE_URL."</a>");
+						throw new SGExceptionMigrationError("You should create a migration, but not standard backup archive if you want to move your website! <b>BackupGuard Free</b> doesn't support migration. More detailed information regarding features included in <b>Free</b> and <b>Pro</b> versions you can find here: <a href='".SG_BACKUP_SITE_URL."'>".SG_BACKUP_SITE_URL."</a>");
 					}
 				}
 			}
@@ -341,7 +342,7 @@ class SGArchive
 
 
 
-			// 	throw new SGExceptionMigrationError("<b>Backup Guard Free</b> doesn't support migration! More detailed information regarding features included in <b>Free</b> and <b>Pro</b> versions you can find here: <a href='".SG_BACKUP_SITE_URL."'>".SG_BACKUP_SITE_URL."</a>");
+			// 	throw new SGExceptionMigrationError("<b>BackupGuard Free</b> doesn't support migration! More detailed information regarding features included in <b>Free</b> and <b>Pro</b> versions you can find here: <a href='".SG_BACKUP_SITE_URL."'>".SG_BACKUP_SITE_URL."</a>");
 			// }
 		}
 		else {
@@ -397,20 +398,6 @@ class SGArchive
 
 			$cdrSize--;
 
-			$path = $destinationPath.$filename;
-			$path = str_replace('\\', '/', $path);
-
-			if ($path[strlen($path)-1] != '/') //it's not an empty directory
-			{
-				$path = dirname($path);
-			}
-
-			if (!$this->createPath($path))
-			{
-				$this->delegate->didFindExtractError('Could not create directory: '.dirname($path));
-				continue;
-			}
-
 			$this->cdr[] = array($filename, $zlen, $ranges);
 		}
 	}
@@ -419,17 +406,35 @@ class SGArchive
 	{
 		fseek($this->fileHandle, 0, SEEK_SET);
 
-		foreach ($this->cdr as $row)
-		{
+		foreach ($this->cdr as $row) {
 			//read extra (not used in this version)
 			$this->read(4);
+
+			$path = $destinationPath.$row[0];
+			$path = str_replace('\\', '/', $path);
+
+			if ($path[strlen($path)-1] != '/') {//it's not an empty directory
+				$path = dirname($path);
+			}
+
+			if (!$this->createPath($path)) {
+				$ranges = $row[2];
+
+				//get last range of file
+				$range = end($ranges);
+				$offset = $range['start'] + $range['size'];
+
+				// skip file and continue
+				fseek($this->fileHandle, $offset, SEEK_CUR);
+				$this->delegate->didFindExtractError('Could not create directory: '.dirname($path));
+				continue;
+			}
 
 			$path = $destinationPath.$row[0];
 
 			$this->delegate->didStartExtractFile($path);
 
-			if (!is_writable(dirname($path)))
-			{
+			if (!is_writable(dirname($path))) {
 				$this->delegate->didFindExtractError('Destination path is not writable: '.dirname($path));
 			}
 
@@ -453,8 +458,7 @@ class SGArchive
 				SGPing::update();
 			}
 
-			if (is_resource($fp))
-			{
+			if (is_resource($fp)) {
 				fclose($fp);
 			}
 

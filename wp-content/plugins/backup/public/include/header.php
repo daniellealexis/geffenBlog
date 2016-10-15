@@ -15,6 +15,10 @@ if(SGConfig::get('SG_BACKUP_SHOW_MIGRATION_ERROR')) {
 	require_once(SG_PUBLIC_INCLUDE_PATH.'notification.migrate.'.strtolower(SG_ENV_ADAPTER).'.php');
 }
 
+if(SGConfig::get('SG_BACKUP_SHOW_NOT_WRITABLE_ERROR')) {
+	require_once(SG_PUBLIC_INCLUDE_PATH.'notification.notwritable.'.strtolower(SG_ENV_ADAPTER).'.php');
+}
+
 ?>
 
 <div class="sg-spinner"></div>
