@@ -95,6 +95,9 @@ input {
 .header-navigation li span {
   text-shadow: 2px 2px 10px #000;
 }
+.header-navigation ul.sub-menu span {
+  text-shadow: none;
+}
 #header .top-header .header-navigation ul li a:hover {
   color: #20bdbe;
 }
@@ -116,6 +119,14 @@ input {
 }
 #footer .widget ul li a:hover {
   color: #e94c38;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .page .container .col-sm-8 {
+    width: 100%;
+  }
+  .page .container .col-sm-offset-2 {
+    margin-left: 0;
+  }
 }
 #fiveStepProcessList {
   padding: 0;
@@ -161,6 +172,33 @@ h3.has-subtitle {
   height: 45px;
   background-color: #20bdbe;
   border: none;
+}
+.ptp-pricing-table .ptp-three-col {
+  width: 33%;
+  padding: 0;
+}
+@media screen and (max-width: 768px) {
+  .ptp-pricing-table .ptp-three-col {
+    width: 100%;
+  }
+}
+.ptp-pricing-table .ptp-price {
+  display: none;
+}
+.ptp-pricing-table .ptp-bullet-item {
+  padding: 0.5em !important;
+}
+.ptp-pricing-table .ptp-plan {
+  color: #fff;
+}
+.ptp-col-id-0 .ptp-plan {
+  background-color: #7961ab;
+}
+.ptp-col-id-1 .ptp-plan {
+  background-color: #a1cc3a;
+}
+.ptp-col-id-2 .ptp-plan {
+  background-color: #f6862a;
 }
 #blog .blog-post .blog-post-title {
   font-size: 2rem;
