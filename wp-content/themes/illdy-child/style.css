@@ -1,6 +1,5 @@
 /*
- Theme Name:   Illdy Child Theme
- Theme URI:    http://example.com/twenty-fifteen-child/
+ Theme Name:   Geffen Careers
  Description:  Illdy Child Theme
  Author:       Danielle Lewandowski
  Author URI:   http://webdevdani.com/
@@ -9,6 +8,9 @@
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 */
+#header {
+  background-position: inherit;
+}
 #header .bottom-header {
   padding-top: 125px;
   padding-bottom: 150px;
@@ -28,6 +30,9 @@
 #header .bottom-header .header-button-two:hover {
   background: #d02c17;
 }
+.front-page-section .section-header h3 {
+  line-height: 1.2;
+}
 .front-page-section .section-header p {
   font-size: 1.15rem;
 }
@@ -36,6 +41,8 @@
 }
 #about .widget_illdy_person {
   width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 #about .widget_illdy_person .person-content h4 {
   font-size: 1.5rem;
@@ -83,6 +90,12 @@ a:hover,
 textarea,
 input {
   border-color: #bbb;
+}
+h1,
+h3,
+h4,
+h5 {
+  line-height: 1.2;
 }
 .top-header .custom-logo,
 .top-header img {
@@ -172,6 +185,10 @@ h3.has-subtitle {
   height: 45px;
   background-color: #20bdbe;
   border: none;
+}
+.contact-form textarea {
+  width: 300px;
+  max-width: 98%;
 }
 .ptp-pricing-table .ptp-three-col {
   width: 33%;
