@@ -249,6 +249,9 @@ h3.has-subtitle {
   background-color: #20bdbe;
   border-color: #20bdbe;
 }
+.markup-format ul li {
+  list-style-position: outside;
+}
 .widget .widget-title::before {
   background-color: #20bdbe;
 }
